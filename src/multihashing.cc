@@ -12,6 +12,7 @@ extern "C" {
     #include "cryptonight_fast.h"
     #include "fresh.h"
     #include "fugue.h"
+	#include "src/flex/flex.h",
     #include "groestl.h"
     #include "hefty1.h"
     #include "keccak.h"
@@ -83,6 +84,7 @@ using namespace v8;
  DECLARE_CALLBACK(c11, c11_hash, 32);
  DECLARE_CALLBACK(fresh, fresh_hash, 32);
  DECLARE_CALLBACK(fugue, fugue_hash, 32);
+ DECLARE_CALLBACK(flex, flex_hash, 32);
  DECLARE_CALLBACK(groestl, groestl_hash, 32);
  DECLARE_CALLBACK(groestlmyriad, groestlmyriad_hash, 32);
  DECLARE_CALLBACK(hefty1, hefty1_hash, 32);
@@ -396,6 +398,7 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, cryptonightfast);
     NAN_EXPORT(target, fresh);
     NAN_EXPORT(target, fugue);
+	NAN_EXPORT(target, flex);
     NAN_EXPORT(target, groestl);
     NAN_EXPORT(target, groestlmyriad);
     NAN_EXPORT(target, hefty1);

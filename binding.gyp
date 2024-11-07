@@ -11,6 +11,7 @@
                 "src/cryptonight.c",
 				"src/cryptonight_fast.c",
                 "src/fresh.c",
+				"src/flex/flex.c",
                 "src/fugue.c",
                 "src/groestl.c",
                 "src/hefty1.c",
