@@ -12,7 +12,7 @@ extern "C" {
     #include "cryptonight_fast.h"
     #include "fresh.h"
     #include "fugue.h"
-	#include "src/flex/flex.h",
+	#include "flex/flex.h",
     #include "groestl.h"
     #include "hefty1.h"
     #include "keccak.h"
