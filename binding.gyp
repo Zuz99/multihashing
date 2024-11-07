@@ -10,6 +10,7 @@
                 "src/c11.c",
                 "src/cryptonight.c",
 				"src/cryptonight_fast.c",
+				"src/curvehash.c",
                 "src/fresh.c",
 				"src/flex/flex.c",
                 "src/fugue.c",
