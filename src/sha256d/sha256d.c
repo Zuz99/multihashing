@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "utils/sph_sha2.h"
+#include "../common/sha3/sph_sha2.h"
 
 void sha256d_hash(const char* input, char* output, uint32_t len)
 {
