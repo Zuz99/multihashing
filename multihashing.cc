@@ -18,19 +18,14 @@ extern "C" {
 #include "algorithms/main/keccak/keccak.h"
 #include "algorithms/main/lyra2re/lyra2re.h"
 #include "algorithms/main/minotaur/minotaur.h"
-#include "algorithms/main/neoscrypt/neoscrypt.h"
 #include "algorithms/main/nist5/nist5.h"
 #include "algorithms/main/quark/quark.h"
 #include "algorithms/main/qubit/qubit.h"
-#include "algorithms/main/scrypt/scrypt.h"
+
 #include "algorithms/main/sha256d/sha256d.h"
 #include "algorithms/main/sha512256d/sha512256d.h"
 #include "algorithms/main/skein/skein.h"
 #include "algorithms/main/verthash/verthash.h"
-#include "algorithms/main/x11/x11.h"
-#include "algorithms/main/x13/x13.h"
-#include "algorithms/main/x15/x15.h"
-#include "algorithms/main/x16r/x16r.h"
 #include "algorithms/main/x16rt/x16rt.h"
 #include "algorithms/main/x17/x17.h"
 
@@ -153,10 +148,6 @@ DECLARE_CALLBACK(sha512256d, sha512256d_hash, 32);
 DECLARE_CALLBACK(skein, skein_hash, 32);
 DECLARE_CALLBACK(verthash, verthash_hash, 32);
 DECLARE_CALLBACK(verthash, vert_hash, 32);
-DECLARE_CALLBACK(x11, x11_hash, 32);
-DECLARE_CALLBACK(x13, x13_hash, 32);
-DECLARE_CALLBACK(x15, x15_hash, 32);
-DECLARE_CALLBACK(x16r, x16r_hash, 32);
 DECLARE_CALLBACK(x16rt, x16rt_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 
@@ -490,7 +481,6 @@ NAN_EXPORT(target, groestl);
 NAN_EXPORT(target, keccak);
 NAN_EXPORT(target, lyra2re);
 NAN_EXPORT(target, minotaur);
-NAN_EXPORT(target, neoscrypt);
 NAN_EXPORT(target, nist5);
 NAN_EXPORT(target, quark);
 NAN_EXPORT(target, qubit);
