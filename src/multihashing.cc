@@ -1103,7 +1103,7 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, neoscrypt);
     NAN_EXPORT(target, yescrypt);
 	NAN_EXPORT(target,"allium");
-  NAN_EXPORT(target,"blake2s";
+  NAN_EXPORT(target,"blake2s");
   NAN_EXPORT(target,"c11");
   NAN_EXPORT(target,"curvehash");
   NAN_EXPORT(target,"equihash");
