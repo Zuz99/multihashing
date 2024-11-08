@@ -10,10 +10,8 @@ extern "C" {
     #include "c11.h"
     #include "cryptonight.h"
     #include "cryptonight_fast.h"
-	#include "curvehash.h"
     #include "fresh.h"
     #include "fugue.h"
-	#include "flex/flex.h"
     #include "groestl.h"
     #include "hefty1.h"
     #include "keccak.h"
@@ -107,8 +105,6 @@ using namespace v8;
  DECLARE_CALLBACK(x16r, x16r_hash, 32);
  DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
  DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
- DECLARE_CALLBACK(curvehash, curve_hash, 32);
- DECLARE_CALLBACK(flex, flex_hash, 32);
 
 DECLARE_FUNC(argon2d) {
     if (info.Length() < 4)
@@ -426,9 +422,6 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, x16rv2);
     NAN_EXPORT(target, neoscrypt);
     NAN_EXPORT(target, yescrypt);
-	NAN_EXPORT(target, curvehash);
-	NAN_EXPORT(target, flex);
-	
 }
 
 NAN_MODULE_WORKER_ENABLED(multihashing, init);
