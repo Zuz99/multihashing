@@ -96,7 +96,6 @@
                 "src/qubit/qubit.c",
                 "src/scrypt/scrypt.c",
                 "src/sha256d/sha256d.c",
-                "src/sha512256d/sha512256d.c",
                 "src/skein/skein.c",
                 "src/x11/x11.c",
                 "src/x13/x13.c",

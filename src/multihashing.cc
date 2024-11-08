@@ -56,7 +56,6 @@ extern "C" {
 #include "qubit/qubit.h"
 #include "scrypt/scrypt.h"
 #include "sha256d/sha256d.h"
-#include "sha512256d/sha512256d.h"
 #include "skein/skein.h"
 #include "x11/x11.h"
 #include "x13/x13.h"
@@ -487,7 +486,6 @@ NAN_MODULE_INIT(init) {
   NAN_EXPORT(target, minotaurx);
   NAN_EXPORT(target, nist5);
   NAN_EXPORT(target, scrypt);
-  NAN_EXPORT(target, sha512256d);
 
 
 }
