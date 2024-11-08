@@ -75,7 +75,7 @@ extern "C" {
     #include "src/x15.h"
     #include "src/x16r.h"
     #include "src/x16rv2.h"
-    #include "src/neoscrypt.h"
+
     #include "src/crypto/argon2/argon2.h"
     #include "src/crypto/yescrypt/yescrypt.h"
 }
@@ -495,7 +495,6 @@ NAN_EXPORT(target, argon2d);
     NAN_EXPORT(target, x15);
     NAN_EXPORT(target, x16r);
     NAN_EXPORT(target, x16rv2);
-    NAN_EXPORT(target, neoscrypt);
     NAN_EXPORT(target, yescrypt);
 	NAN_EXPORT(target, curvehash);
 	NAN_EXPORT(target, flex);
