@@ -63,8 +63,8 @@ extern "C" {
 #include "x13/x13.h"
 #include "x15/x15.h"
 #include "x16r/x16r.h"
-#include "x16rt/x16rt.h"
-#include "x17/x17.h"
+
+
 
 // ProgPow Imports
 #include "evrprogpow/evrprogpow.h"
@@ -490,8 +490,7 @@ NAN_MODULE_INIT(init) {
   NAN_EXPORT(target, scrypt);
   NAN_EXPORT(target, sha512256d);
   NAN_EXPORT(target, verthash);
-  NAN_EXPORT(target, x16rt);
-  NAN_EXPORT(target, x17);
+
 }
 
 NAN_MODULE_WORKER_ENABLED(multihashing, init);
