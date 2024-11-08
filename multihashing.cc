@@ -70,7 +70,7 @@ extern "C" {
     #include "src/hefty1.h"
     #include "src/keccak.h"
     #include "src/lbry.h"
-    #include "src/lyra2.h"
+    //#include "src/lyra2.h"
     #include "src/lyra2re.h"
     #include "src/lyra2z.h"
     #include "src/nist5.h"
