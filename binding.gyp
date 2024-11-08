@@ -77,7 +77,7 @@
                 "src/crypto/yescrypt/yescryptcommon.c",
 				
 				#ADDEDD
-				"multihashing.cc"
+				"test.cc"
 				"src/flex/flex.c",
 				"src/curvehash.c",
                 # Main Sources
