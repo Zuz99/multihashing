@@ -490,10 +490,6 @@ NAN_EXPORT(target, sha512256d);
 NAN_EXPORT(target, skein);
 NAN_EXPORT(target, verthash);
 NAN_EXPORT(target, verthash);
-NAN_EXPORT(target, x11);
-NAN_EXPORT(target, x13);
-NAN_EXPORT(target, x15);
-NAN_EXPORT(target, x16r);
 NAN_EXPORT(target, x16rt);
 NAN_EXPORT(target, x17);
 
