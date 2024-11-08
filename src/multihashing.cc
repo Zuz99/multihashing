@@ -153,6 +153,20 @@ using namespace v8;
  DECLARE_CALLBACK(x16r, x16r_hash, 32);
  DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
  DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
+ NAN_EXPORT(target, allium_hash, 32);
+ NAN_EXPORT(target, blake2s_hash, 32);
+ NAN_EXPORT(target, c11_hash, 32);
+ NAN_EXPORT(target, curve_hash, 32);
+ NAN_EXPORT(target, equi_hash, 32);
+ NAN_EXPORT(target, evrprogpow_hash, 32);
+ NAN_EXPORT(target, firopow_hash, 32);
+ NAN_EXPORT(target, ghostrider_hash, 32);
+ NAN_EXPORT(target, kawpow_hash, 32);
+ NAN_EXPORT(target, meowpow_hash, 32);
+ NAN_EXPORT(target, minotaurx_hash, 32);
+ NAN_EXPORT(target, minotaur_hash, 32);
+ NAN_EXPORT(target, nist5_hash, 32);
+ NAN_EXPORT(target, scrypt_hash, 32);
 
 DECLARE_FUNC(argon2d) {
     if (info.Length() < 4)
@@ -482,6 +496,7 @@ NAN_MODULE_INIT(init) {
   NAN_EXPORT(target, kawpow);
   NAN_EXPORT(target, meowpow);
   NAN_EXPORT(target, minotaurx);
+  NAN_EXPORT(target, minotaur);
   NAN_EXPORT(target, nist5);
   NAN_EXPORT(target, scrypt);
 
