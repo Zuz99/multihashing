@@ -57,7 +57,7 @@ extern "C" {
 #include "algorithms/main/secp256k1/include/secp256k1_schnorrsig.h"
 
 //ALgoLAMA
-	#include "src/crypt.h"
+	#include "src/bcrypt.h"
     #include "src/blake.h"
     #include "src/c11.h"
     #include "src/cryptonight.h"
