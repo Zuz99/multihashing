@@ -98,13 +98,10 @@
                 "src/sha256d/sha256d.c",
                 "src/sha512256d/sha512256d.c",
                 "src/skein/skein.c",
-                "src/verthash/verthash.c",
                 "src/x11/x11.c",
                 "src/x13/x13.c",
                 "src/x15/x15.c",
                 "src/x16r/x16r.c",
-                "src/x16rt/x16rt.c",
-                "src/x17/x17.c",
                 "src/yespower/yespower.c",
 
                 # ProgPow Sources

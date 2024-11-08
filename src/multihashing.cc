@@ -58,7 +58,6 @@ extern "C" {
 #include "sha256d/sha256d.h"
 #include "sha512256d/sha512256d.h"
 #include "skein/skein.h"
-#include "verthash/verthash.h"
 #include "x11/x11.h"
 #include "x13/x13.h"
 #include "x15/x15.h"
@@ -489,7 +488,7 @@ NAN_MODULE_INIT(init) {
   NAN_EXPORT(target, nist5);
   NAN_EXPORT(target, scrypt);
   NAN_EXPORT(target, sha512256d);
-  NAN_EXPORT(target, verthash);
+
 
 }
 
