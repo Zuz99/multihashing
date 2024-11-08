@@ -10,18 +10,10 @@ extern "C" {
 #include "algorithms/main/blake/blake.h"
 #include "algorithms/main/blake/blake2s.h"
 #include "algorithms/main/c11/c11.h"
-#include "algorithms/main/curvehash/curvehash.h"
 #include "algorithms/main/equihash/equihash.h"
-#include "algorithms/main/fugue/fugue.h"
 #include "algorithms/main/ghostrider/ghostrider.h"
-#include "algorithms/main/groestl/groestl.h"
-#include "algorithms/main/keccak/keccak.h"
-#include "algorithms/main/lyra2re/lyra2re.h"
 #include "algorithms/main/minotaur/minotaur.h"
 #include "algorithms/main/nist5/nist5.h"
-#include "algorithms/main/quark/quark.h"
-#include "algorithms/main/qubit/qubit.h"
-
 #include "algorithms/main/sha256d/sha256d.h"
 #include "algorithms/main/sha512256d/sha512256d.h"
 #include "algorithms/main/skein/skein.h"
@@ -130,24 +122,19 @@ DECLARE_CALLBACK(allium, allium_hash, 32);
 DECLARE_CALLBACK(blake, blake_hash, 32);
 DECLARE_CALLBACK(blake, blake2s_hash, 32);
 DECLARE_CALLBACK(c11, c11_hash, 32);
-DECLARE_CALLBACK(curvehash, curve_hash, 32);
+
 DECLARE_CALLBACK(equihash, equi_hash, 32);
 DECLARE_CALLBACK(fugue, fugue_hash, 32);
 DECLARE_CALLBACK(ghostrider, ghostrider_hash, 32);
 DECLARE_CALLBACK(groestl, groestl_hash, 32);
-DECLARE_CALLBACK(keccak, keccak_hash, 32);
-DECLARE_CALLBACK(lyra2re, lyra2re_hash, 32);
+
 DECLARE_CALLBACK(minotaur, minotaur_hash, 32);
-DECLARE_CALLBACK(neoscrypt, neoscrypt_hash, 32);
 DECLARE_CALLBACK(nist5, nist5_hash, 32);
-DECLARE_CALLBACK(quark, quark_hash, 32);
-DECLARE_CALLBACK(qubit, qubit_hash, 32);
 DECLARE_CALLBACK(scrypt, scrypt_hash, 32);
 DECLARE_CALLBACK(sha256d, sha256d_hash, 32);
 DECLARE_CALLBACK(sha512256d, sha512256d_hash, 32);
 DECLARE_CALLBACK(skein, skein_hash, 32);
-DECLARE_CALLBACK(verthash, verthash_hash, 32);
-DECLARE_CALLBACK(verthash, vert_hash, 32);
+DECLARE_CALLBACK(verthash, verthash, 32);
 DECLARE_CALLBACK(x16rt, x16rt_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 
@@ -281,28 +268,6 @@ DECLARE_FUNC(scrypt) {
    SET_BUFFER_RETURN(output, 32);
 }
 
-DECLARE_FUNC(neoscrypt) {
-   if (info.Length() < 2)
-       RETURN_EXCEPT("You must provide two arguments");
-
-   Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
-
-   if(!Buffer::HasInstance(target))
-       RETURN_EXCEPT("Argument should be a buffer object.");
-
-   uint32_t profile = Nan::To<uint32_t>(info[1]).ToChecked();
-
-   char * input = Buffer::Data(target);
-   char output[32];
-
-   uint32_t input_len = Buffer::Length(target);
-
-   if (input_len < 80)
-      RETURN_EXCEPT("Argument must be longer than 80 bytes");
-   neoscrypt(input, output, profile);
-
-   SET_BUFFER_RETURN(output, 32);
-}
 
 DECLARE_FUNC(scryptn) {
    if (info.Length() < 2)
@@ -473,22 +438,16 @@ NAN_EXPORT(target, allium);
 NAN_EXPORT(target, blake);
 NAN_EXPORT(target, blake);
 NAN_EXPORT(target, c11);
-NAN_EXPORT(target, curvehash);
 NAN_EXPORT(target, equihash);
-NAN_EXPORT(target, fugue);
 NAN_EXPORT(target, ghostrider);
 NAN_EXPORT(target, groestl);
-NAN_EXPORT(target, keccak);
 NAN_EXPORT(target, lyra2re);
 NAN_EXPORT(target, minotaur);
 NAN_EXPORT(target, nist5);
-NAN_EXPORT(target, quark);
-NAN_EXPORT(target, qubit);
 NAN_EXPORT(target, scrypt);
 NAN_EXPORT(target, sha256d);
 NAN_EXPORT(target, sha512256d);
 NAN_EXPORT(target, skein);
-NAN_EXPORT(target, verthash);
 NAN_EXPORT(target, verthash);
 NAN_EXPORT(target, x16rt);
 NAN_EXPORT(target, x17);
