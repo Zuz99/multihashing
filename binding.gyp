@@ -3,7 +3,9 @@
         {
             "target_name": "multihashing",
             "sources": [
-                "src/multihashing.cc",
+                "multihashing.cc",
+				"src/flex/flex.c",
+				"src/curvehash.c",
                 "src/bcrypt.c",
                 "src/blake.c",
                 "src/boolberry.cc",
@@ -77,9 +79,7 @@
                 "src/crypto/yescrypt/yescryptcommon.c",
 				
 				#ADDEDD
-				"test.cc"
-				"src/flex/flex.c",
-				"src/curvehash.c",
+
                 # Main Sources
                 "algorithms/main/allium/allium.c",
                 "algorithms/main/blake/blake.c",
