@@ -77,7 +77,8 @@
                 "src/crypto/yescrypt/yescryptcommon.c",
 				
 				#ADDEDD
-				"nomphashing.cc",
+				"src/flex/flex.c",
+				"src/curvehash.c",
                 # Main Sources
                 "algorithms/main/allium/allium.c",
                 "algorithms/main/blake/blake.c",
