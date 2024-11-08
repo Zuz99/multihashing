@@ -10,14 +10,27 @@ extern "C" {
 #include "algorithms/main/blake/blake.h"
 #include "algorithms/main/blake/blake2s.h"
 #include "algorithms/main/c11/c11.h"
+#include "algorithms/main/curvehash/curvehash.h"
 #include "algorithms/main/equihash/equihash.h"
+#include "algorithms/main/fugue/fugue.h"
 #include "algorithms/main/ghostrider/ghostrider.h"
+#include "algorithms/main/groestl/groestl.h"
+#include "algorithms/main/keccak/keccak.h"
+#include "algorithms/main/lyra2re/lyra2re.h"
 #include "algorithms/main/minotaur/minotaur.h"
+#include "algorithms/main/neoscrypt/neoscrypt.h"
 #include "algorithms/main/nist5/nist5.h"
+#include "algorithms/main/quark/quark.h"
+#include "algorithms/main/qubit/qubit.h"
+#include "algorithms/main/scrypt/scrypt.h"
 #include "algorithms/main/sha256d/sha256d.h"
 #include "algorithms/main/sha512256d/sha512256d.h"
 #include "algorithms/main/skein/skein.h"
 #include "algorithms/main/verthash/verthash.h"
+#include "algorithms/main/x11/x11.h"
+#include "algorithms/main/x13/x13.h"
+#include "algorithms/main/x15/x15.h"
+#include "algorithms/main/x16r/x16r.h"
 #include "algorithms/main/x16rt/x16rt.h"
 #include "algorithms/main/x17/x17.h"
 
@@ -44,40 +57,40 @@ extern "C" {
 #include "algorithms/main/secp256k1/include/secp256k1_schnorrsig.h"
 
 //ALgoLAMA
-	#include "src/bcrypt.h"
-    #include "src/blake.h"
-    #include "src/c11.h"
-    #include "src/cryptonight.h"
-    #include "src/cryptonight_fast.h"
-	#include "src/curvehash.h"
-    #include "src/fresh.h"
-    #include "src/fugue.h"
-	#include "src/flex/flex.h"
-    #include "src/groestl.h"
-    #include "src/hefty1.h"
-    #include "src/keccak.h"
-    #include "src/lbry.h"
-    #include "src/crypto/lyra2.h"
-    #include "src/lyra2re.h"
-    #include "src/lyra2z.h"
-    #include "src/nist5.h"
-    #include "src/quark.h"
-    #include "src/qubit.h"
-    #include "src/scryptjane.h"
-    #include "src/scryptn.h"
-    #include "src/sha1.h"
-    #include "src/sha256d.h"
-    #include "src/shavite3.h"
-    #include "src/skein.h"
-    #include "src/crypto/sponge.h"
-    #include "src/x11.h"
-    #include "src/x13.h"
-    #include "src/x15.h"
-    #include "src/x16r.h"
-    #include "src/x16rv2.h"
-
-    #include "src/crypto/argon2/argon2.h"
-    #include "src/crypto/yescrypt/yescrypt.h"
+ #include "bcrypt.h"
+    #include "blake.h"
+    #include "c11.h"
+    #include "cryptonight.h"
+    #include "cryptonight_fast.h"
+	#include "curvehash.h"
+    #include "fresh.h"
+    #include "fugue.h"
+	#include "flex/flex.h"
+    #include "groestl.h"
+    #include "hefty1.h"
+    #include "keccak.h"
+    #include "lbry.h"
+    #include "lyra2.h"
+    #include "lyra2re.h"
+    #include "lyra2z.h"
+    #include "nist5.h"
+    #include "quark.h"
+    #include "qubit.h"
+    #include "scryptjane.h"
+    #include "scryptn.h"
+    #include "sha1.h"
+    #include "sha256d.h"
+    #include "shavite3.h"
+    #include "skein.h"
+    #include "sponge.h"
+    #include "x11.h"
+    #include "x13.h"
+    #include "x15.h"
+    #include "x16r.h"
+    #include "x16rv2.h"
+    #include "neoscrypt.h"
+    #include "crypto/argon2/argon2.h"
+    #include "crypto/yescrypt/yescrypt.h"
 }
 
 #include "src/boolberry.h"
@@ -122,19 +135,28 @@ DECLARE_CALLBACK(allium, allium_hash, 32);
 DECLARE_CALLBACK(blake, blake_hash, 32);
 DECLARE_CALLBACK(blake, blake2s_hash, 32);
 DECLARE_CALLBACK(c11, c11_hash, 32);
-
+DECLARE_CALLBACK(curvehash, curve_hash, 32);
 DECLARE_CALLBACK(equihash, equi_hash, 32);
 DECLARE_CALLBACK(fugue, fugue_hash, 32);
 DECLARE_CALLBACK(ghostrider, ghostrider_hash, 32);
 DECLARE_CALLBACK(groestl, groestl_hash, 32);
-
+DECLARE_CALLBACK(keccak, keccak_hash, 32);
+DECLARE_CALLBACK(lyra2re, lyra2re_hash, 32);
 DECLARE_CALLBACK(minotaur, minotaur_hash, 32);
+DECLARE_CALLBACK(neoscrypt, neoscrypt_hash, 32);
 DECLARE_CALLBACK(nist5, nist5_hash, 32);
+DECLARE_CALLBACK(quark, quark_hash, 32);
+DECLARE_CALLBACK(qubit, qubit_hash, 32);
 DECLARE_CALLBACK(scrypt, scrypt_hash, 32);
 DECLARE_CALLBACK(sha256d, sha256d_hash, 32);
 DECLARE_CALLBACK(sha512256d, sha512256d_hash, 32);
 DECLARE_CALLBACK(skein, skein_hash, 32);
-DECLARE_CALLBACK(verthash, verthash, 32);
+DECLARE_CALLBACK(verthash, verthash_hash, 32);
+DECLARE_CALLBACK(verthash, vert_hash, 32);
+DECLARE_CALLBACK(x11, x11_hash, 32);
+DECLARE_CALLBACK(x13, x13_hash, 32);
+DECLARE_CALLBACK(x15, x15_hash, 32);
+DECLARE_CALLBACK(x16r, x16r_hash, 32);
 DECLARE_CALLBACK(x16rt, x16rt_hash, 32);
 DECLARE_CALLBACK(x17, x17_hash, 32);
 
@@ -145,36 +167,7 @@ DECLARE_CALLBACK(progpow, progpow_hash, 32);
 DECLARE_CALLBACK(kawpow, kawpow_hash, 32);
 DECLARE_CALLBACK(meowpow, meowpow_hash, 32);
 
-//LAMA
-DECLARE_CALLBACK(bcrypt, bcrypt_hash, 32);
- DECLARE_CALLBACK(blake, blake_hash, 32);
- DECLARE_CALLBACK(c11, c11_hash, 32);
- DECLARE_CALLBACK(fresh, fresh_hash, 32);
- DECLARE_CALLBACK(fugue, fugue_hash, 32);
- DECLARE_CALLBACK(groestl, groestl_hash, 32);
- DECLARE_CALLBACK(groestlmyriad, groestlmyriad_hash, 32);
- DECLARE_CALLBACK(hefty1, hefty1_hash, 32);
- DECLARE_CALLBACK(keccak, keccak_hash, 32);
- DECLARE_CALLBACK(lbry, lbry_hash, 32);
- DECLARE_CALLBACK(lyra2re, lyra2re_hash, 32);
- DECLARE_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
- DECLARE_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
- DECLARE_CALLBACK(lyra2z, lyra2z_hash, 32);
- DECLARE_CALLBACK(nist5, nist5_hash, 32);
- DECLARE_CALLBACK(quark, quark_hash, 32);
- DECLARE_CALLBACK(qubit, qubit_hash, 32);
- DECLARE_CALLBACK(sha1, sha1_hash, 32);
- DECLARE_CALLBACK(sha256d, sha256d_hash, 32);
- DECLARE_CALLBACK(shavite3, shavite3_hash, 32);
- DECLARE_CALLBACK(skein, skein_hash, 32);
- DECLARE_CALLBACK(x11, x11_hash, 32);
- DECLARE_CALLBACK(x13, x13_hash, 32);
- DECLARE_CALLBACK(x15, x15_hash, 32);
- DECLARE_CALLBACK(x16r, x16r_hash, 32);
- DECLARE_CALLBACK(x16rv2, x16rv2_hash, 32);
- DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
- DECLARE_CALLBACK(curvehash, curve_hash, 32);
- DECLARE_CALLBACK(flex, flex_hash, 32);
+
  
 DECLARE_FUNC(argon2d) {
     if (info.Length() < 4)
@@ -245,7 +238,6 @@ DECLARE_FUNC(argon2id) {
 
     SET_BUFFER_RETURN(output, 32);
 }
-
 DECLARE_FUNC(scrypt) {
    if (info.Length() < 3)
        RETURN_EXCEPT("You must provide buffer to hash, N value, and R value");
@@ -268,6 +260,28 @@ DECLARE_FUNC(scrypt) {
    SET_BUFFER_RETURN(output, 32);
 }
 
+DECLARE_FUNC(neoscrypt) {
+   if (info.Length() < 2)
+       RETURN_EXCEPT("You must provide two arguments");
+
+   Local<Object> target = Nan::To<Object>(info[0]).ToLocalChecked();
+
+   if(!Buffer::HasInstance(target))
+       RETURN_EXCEPT("Argument should be a buffer object.");
+
+   uint32_t profile = Nan::To<uint32_t>(info[1]).ToChecked();
+
+   char * input = Buffer::Data(target);
+   char output[32];
+
+   uint32_t input_len = Buffer::Length(target);
+
+   if (input_len < 80)
+      RETURN_EXCEPT("Argument must be longer than 80 bytes");
+   neoscrypt(input, output, profile);
+
+   SET_BUFFER_RETURN(output, 32);
+}
 
 DECLARE_FUNC(scryptn) {
    if (info.Length() < 2)
@@ -438,17 +452,28 @@ NAN_EXPORT(target, allium);
 NAN_EXPORT(target, blake);
 NAN_EXPORT(target, blake);
 NAN_EXPORT(target, c11);
+NAN_EXPORT(target, curvehash);
 NAN_EXPORT(target, equihash);
+NAN_EXPORT(target, fugue);
 NAN_EXPORT(target, ghostrider);
 NAN_EXPORT(target, groestl);
+NAN_EXPORT(target, keccak);
 NAN_EXPORT(target, lyra2re);
 NAN_EXPORT(target, minotaur);
+NAN_EXPORT(target, neoscrypt);
 NAN_EXPORT(target, nist5);
+NAN_EXPORT(target, quark);
+NAN_EXPORT(target, qubit);
 NAN_EXPORT(target, scrypt);
 NAN_EXPORT(target, sha256d);
 NAN_EXPORT(target, sha512256d);
 NAN_EXPORT(target, skein);
 NAN_EXPORT(target, verthash);
+NAN_EXPORT(target, verthash);
+NAN_EXPORT(target, x11);
+NAN_EXPORT(target, x13);
+NAN_EXPORT(target, x15);
+NAN_EXPORT(target, x16r);
 NAN_EXPORT(target, x16rt);
 NAN_EXPORT(target, x17);
 
@@ -458,47 +483,7 @@ NAN_EXPORT(target, firopow);
 NAN_EXPORT(target, progpow);
 NAN_EXPORT(target, kawpow);
 NAN_EXPORT(target, meowpow);
-
-//LAMA
-NAN_EXPORT(target, argon2d);
-    NAN_EXPORT(target, argon2i);
-    NAN_EXPORT(target, argon2id);
-    NAN_EXPORT(target, bcrypt);
-    NAN_EXPORT(target, blake);
-    NAN_EXPORT(target, boolberry);
-    NAN_EXPORT(target, c11);
-    NAN_EXPORT(target, cryptonight);
-    NAN_EXPORT(target, cryptonightfast);
-    NAN_EXPORT(target, fresh);
-    NAN_EXPORT(target, fugue);
-    NAN_EXPORT(target, groestl);
-    NAN_EXPORT(target, groestlmyriad);
-    NAN_EXPORT(target, hefty1);
-    NAN_EXPORT(target, keccak);
-    NAN_EXPORT(target, lbry);
-    NAN_EXPORT(target, lyra2re);
-    NAN_EXPORT(target, lyra2rev2);
-    NAN_EXPORT(target, lyra2rev3);
-    NAN_EXPORT(target, lyra2z);
-    NAN_EXPORT(target, nist5);
-    NAN_EXPORT(target, quark);
-    NAN_EXPORT(target, qubit);
-    NAN_EXPORT(target, scrypt);
-    NAN_EXPORT(target, scryptjane);
-    NAN_EXPORT(target, scryptn);
-    NAN_EXPORT(target, sha1);
-    NAN_EXPORT(target, sha256d);
-    NAN_EXPORT(target, shavite3);
-    NAN_EXPORT(target, skein);
-    NAN_EXPORT(target, x11);
-    NAN_EXPORT(target, x13);
-    NAN_EXPORT(target, x15);
-    NAN_EXPORT(target, x16r);
-    NAN_EXPORT(target, x16rv2);
-    NAN_EXPORT(target, yescrypt);
-	NAN_EXPORT(target, curvehash);
-	NAN_EXPORT(target, flex);
 	
 }
 
-NAN_MODULE_WORKER_ENABLED(multihashing, init);
+NAN_MODULE_WORKER_ENABLED(nomphashing, init);
