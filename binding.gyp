@@ -89,7 +89,7 @@
                 "src/groestl/groestl.c",
                 "src/keccak/keccak.c",
                 "src/lyra2re/lyra2re.c",
-                "src/minotaur/minotaur.c",
+               
                 "src/neoscrypt/neoscrypt.c",
                 "src/nist5/nist5.c",
                 "src/quark/quark.c",

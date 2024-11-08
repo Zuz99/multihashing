@@ -49,7 +49,6 @@ extern "C" {
 #include "groestl/groestl.h"
 #include "keccak/keccak.h"
 #include "lyra2re/lyra2re.h"
-#include "minotaur/minotaur.h"
 #include "neoscrypt/neoscrypt.h"
 #include "nist5/nist5.h"
 #include "quark/quark.h"
@@ -482,7 +481,6 @@ NAN_MODULE_INIT(init) {
   NAN_EXPORT(target, ghostrider);
   NAN_EXPORT(target, kawpow);
   NAN_EXPORT(target, meowpow);
-  NAN_EXPORT(target, minotaur);
   NAN_EXPORT(target, minotaurx);
   NAN_EXPORT(target, nist5);
   NAN_EXPORT(target, scrypt);
