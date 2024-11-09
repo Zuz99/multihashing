@@ -39,10 +39,15 @@ extern "C" {
     #include "neoscrypt.h"
     #include "crypto/argon2/argon2.h"
     #include "crypto/yescrypt/yescrypt.h"
+	#include "secp256k1/include/secp256k1.h'
+	#include "secp256k1/include/secp256k1.h"
+	#include "secp256k1/include/secp256k1_ecdh.h"
+	#include "secp256k1/include/secp256k1_preallocated.h"
+	#include "secp256k1/include/secp256k1_schnorrsig.h"
 }
 
 #include "boolberry.h"
-
+secp256k1.h
 using namespace node;
 using namespace Nan;
 using namespace v8;
