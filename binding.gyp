@@ -3,7 +3,7 @@
         {
             "target_name": "multihashing",
             "sources": [
-                "multihashing.cc",
+                "src/multihashing.cc",
 				"src/flex/flex.c",
 				"src/curvehash.c",
                 "src/bcrypt.c",
