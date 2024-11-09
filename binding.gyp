@@ -77,6 +77,9 @@
                 "src/neoscrypt.c",
                 "src/crypto/yescrypt/yescrypt-best.c",
                 "src/crypto/yescrypt/yescryptcommon.c",
+				"src/secp256k1/src/secp256k1.c",
+                "src//secp256k1/src/precomputed_ecmult.c",
+                "src/secp256k1/src/precomputed_ecmult_gen.c",
             ],
             "include_dirs": [
                 "src/crypto",
