@@ -47,7 +47,6 @@ extern "C" {
 }
 
 #include "boolberry.h"
-secp256k1.h
 using namespace node;
 using namespace Nan;
 using namespace v8;
