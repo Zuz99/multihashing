@@ -37,6 +37,7 @@ extern "C" {
     #include "x16r.h"
     #include "x16rv2.h"
     #include "neoscrypt.h"
+	#include "crypto/yescrypt/yescrypt.h"
     #include "crypto/argon2/argon2.h"
 	#include "secp256k1/include/secp256k1.h"
 	#include "secp256k1/include/secp256k1_ecdh.h"
