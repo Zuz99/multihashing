@@ -57,7 +57,7 @@ static void hash_echo512(const unsigned char *data, unsigned char *hash) {
     sph_echo512_close(&ctx, hash);
 }
 
-uint256 HashX7(const unsigned char *pbegin, const unsigned char *pend, uint64_t timestamp) {
+uint256 x7_hash(const unsigned char *pbegin, const unsigned char *pend, uint64_t timestamp) {
     uint512 hash[7];
     unsigned char temp1[64];
     unsigned char temp2[64];
