@@ -31,7 +31,6 @@ extern "C" {
     #include "shavite3.h"
     #include "skein.h"
     #include "sponge.h"
-	#include "x7.h"
     #include "x11.h"
     #include "x13.h"
     #include "x15.h"
@@ -424,7 +423,6 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, sha256d);
     NAN_EXPORT(target, shavite3);
     NAN_EXPORT(target, skein);
-	NAN_EXPORT(target, x7);
     NAN_EXPORT(target, x11);
     NAN_EXPORT(target, x13);
     NAN_EXPORT(target, x15);

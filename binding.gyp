@@ -29,7 +29,6 @@
                 "src/sha256d.c",
                 "src/shavite3.c",
                 "src/skein.c",
-				"src/x7.c",
                 "src/x11.c",
                 "src/x13.c",
                 "src/x15.c",
