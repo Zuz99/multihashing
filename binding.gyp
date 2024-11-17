@@ -73,7 +73,6 @@
                 "src/crypto/hash.c",
                 "src/crypto/aesb.c",
                 "src/crypto/sha256.c",
-				"src/crypto/block_header.c"
                 "src/crypto/wild_keccak.cpp",
                 "src/neoscrypt.c",
                 "src/crypto/yescrypt/yescrypt-best.c",

@@ -43,7 +43,7 @@ extern "C" {
 	#include "secp256k1/include/secp256k1_ecdh.h"
 	#include "secp256k1/include/secp256k1_preallocated.h"
 	#include "secp256k1/include/secp256k1_schnorrsig.h"
-	#include "block_header.h"
+
 }
 
 #include "boolberry.h"
