@@ -1,4 +1,4 @@
-#include "x7_hash.h"
+#include "x7.h"
 #include <sph_blake.h>
 #include <sph_bmw.h>
 #include <sph_groestl.h>

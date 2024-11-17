@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "x7_hash.h"
+#include "x7.h"
 
 // Define the block header structure
 typedef struct {
