@@ -31,6 +31,7 @@ extern "C" {
     #include "shavite3.h"
     #include "skein.h"
     #include "sponge.h"
+	#include "x7_hash.h"
     #include "x11.h"
     #include "x13.h"
     #include "x15.h"
@@ -104,6 +105,7 @@ using namespace v8;
  DECLARE_CALLBACK(sha256d, sha256d_hash, 32);
  DECLARE_CALLBACK(shavite3, shavite3_hash, 32);
  DECLARE_CALLBACK(skein, skein_hash, 32);
+ DECLARE_CALLBACK(x7, x7_hash, 32);
  DECLARE_CALLBACK(x11, x11_hash, 32);
  DECLARE_CALLBACK(x13, x13_hash, 32);
  DECLARE_CALLBACK(x15, x15_hash, 32);
@@ -422,6 +424,7 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, sha256d);
     NAN_EXPORT(target, shavite3);
     NAN_EXPORT(target, skein);
+	NAN_EXPORT(target, x7);
     NAN_EXPORT(target, x11);
     NAN_EXPORT(target, x13);
     NAN_EXPORT(target, x15);

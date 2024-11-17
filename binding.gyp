@@ -29,6 +29,7 @@
                 "src/sha256d.c",
                 "src/shavite3.c",
                 "src/skein.c",
+				"src/x7_hash.c",
                 "src/x11.c",
                 "src/x13.c",
                 "src/x15.c",
