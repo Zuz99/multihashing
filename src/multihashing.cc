@@ -31,7 +31,7 @@ extern "C" {
     #include "shavite3.h"
     #include "skein.h"
     #include "sponge.h"
-	#include "x7_hash.h"
+	#include "x7.h"
     #include "x11.h"
     #include "x13.h"
     #include "x15.h"
