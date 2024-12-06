@@ -15,6 +15,7 @@ extern "C" {
     #include "fugue.h"
 	#include "flex/flex.h"
     #include "groestl.h"
+	#include "gr.h"
     #include "hefty1.h"
     #include "keccak.h"
     #include "lbry.h"
@@ -113,6 +114,7 @@ using namespace v8;
  DECLARE_CALLBACK(yescrypt, yescrypt_hash, 32);
  DECLARE_CALLBACK(curvehash, curve_hash, 32);
  DECLARE_CALLBACK(flex, flex_hash, 32);
+ DECLARE_CALLBACK(ghostrider, gr_hash, 32);
 
 DECLARE_FUNC(argon2d) {
     if (info.Length() < 4)
@@ -432,6 +434,7 @@ NAN_MODULE_INIT(init) {
     NAN_EXPORT(target, yescrypt);
 	NAN_EXPORT(target, curvehash);
 	NAN_EXPORT(target, flex);
+	NAN_EXPORT(target, ghostrider);
 	
 }
 
