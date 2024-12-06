@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -643,7 +643,6 @@ mix_column(sph_u32 W[16][4], int ia, int ib, int ic, int id)
 		} \
 	} while (0)
 
-#if defined(USE_SPH_ECHO224) || defined(USE_SPH_ECHO256)
 static void
 echo_small_init(sph_echo_small_context *sc, unsigned out_len)
 {
@@ -669,7 +668,6 @@ echo_small_init(sph_echo_small_context *sc, unsigned out_len)
 	sc->ptr = 0;
 	sc->C0 = sc->C1 = sc->C2 = sc->C3 = 0;
 }
-#endif
 
 static void
 echo_big_init(sph_echo_big_context *sc, unsigned out_len)
@@ -713,7 +711,6 @@ echo_big_init(sph_echo_big_context *sc, unsigned out_len)
 	sc->C0 = sc->C1 = sc->C2 = sc->C3 = 0;
 }
 
-#if defined(USE_SPH_ECHO224) || defined(USE_SPH_ECHO256)
 static void
 echo_small_compress(sph_echo_small_context *sc)
 {
@@ -721,7 +718,6 @@ echo_small_compress(sph_echo_small_context *sc)
 
 	COMPRESS_SMALL(sc);
 }
-#endif
 
 static void
 echo_big_compress(sph_echo_big_context *sc)
@@ -731,7 +727,6 @@ echo_big_compress(sph_echo_big_context *sc)
 	COMPRESS_BIG(sc);
 }
 
-#if defined(USE_SPH_ECHO224) || defined(USE_SPH_ECHO256)
 static void
 echo_small_core(sph_echo_small_context *sc,
 	const unsigned char *data, size_t len)
@@ -766,7 +761,6 @@ echo_small_core(sph_echo_small_context *sc,
 	}
 	sc->ptr = ptr;
 }
-#endif
 
 static void
 echo_big_core(sph_echo_big_context *sc,
@@ -803,7 +797,6 @@ echo_big_core(sph_echo_big_context *sc,
 	sc->ptr = ptr;
 }
 
-#if defined(USE_SPH_ECHO224) || defined(USE_SPH_ECHO256)
 static void
 echo_small_close(sph_echo_small_context *sc, unsigned ub, unsigned n,
 	void *dst, unsigned out_size_w32)
@@ -862,7 +855,6 @@ echo_small_close(sph_echo_small_context *sc, unsigned ub, unsigned n,
 	memcpy(dst, u.tmp, out_size_w32 << 2);
 	echo_small_init(sc, out_size_w32 << 5);
 }
-#endif
 
 static void
 echo_big_close(sph_echo_big_context *sc, unsigned ub, unsigned n,
@@ -923,7 +915,6 @@ echo_big_close(sph_echo_big_context *sc, unsigned ub, unsigned n,
 	echo_big_init(sc, out_size_w32 << 5);
 }
 
-#ifdef USE_SPH_ECHO224
 /* see sph_echo.h */
 void
 sph_echo224_init(void *cc)
@@ -951,9 +942,7 @@ sph_echo224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	echo_small_close(cc, ub, n, dst, 7);
 }
-#endif
 
-#ifdef USE_SPH_ECHO256
 /* see sph_echo.h */
 void
 sph_echo256_init(void *cc)
@@ -981,9 +970,7 @@ sph_echo256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	echo_small_close(cc, ub, n, dst, 8);
 }
-#endif
 
-#ifdef USE_SPH_ECHO384
 /* see sph_echo.h */
 void
 sph_echo384_init(void *cc)
@@ -1011,7 +998,6 @@ sph_echo384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	echo_big_close(cc, ub, n, dst, 12);
 }
-#endif
 
 /* see sph_echo.h */
 void

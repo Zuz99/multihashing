@@ -8,7 +8,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -16,10 +16,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -182,11 +182,6 @@ void sph_blake224_addbits_and_close(
 	void *cc, unsigned ub, unsigned n, void *dst);
 
 /**
- * Switch for the number of rounds (old blake was 8)
- */
-extern int blake256_rounds;
-
-/**
  * Initialize a BLAKE-256 context. This process performs no memory allocation.
  *
  * @param cc   the BLAKE-256 context (pointer to a
@@ -232,7 +227,7 @@ void sph_blake256_addbits_and_close(
 	void *cc, unsigned ub, unsigned n, void *dst);
 
 /**
- * Allow blakecoin and blake variants
+ * Added for compat with both blake/blakecoin algos
  */
 void sph_blake256_set_rounds(int rounds);
 

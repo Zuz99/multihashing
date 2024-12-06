@@ -840,7 +840,6 @@ bmw64_close(sph_bmw_big_context *sc, unsigned ub, unsigned n,
 
 #endif
 
-#ifdef USE_SPH_BMW224
 /* see sph_bmw.h */
 void
 sph_bmw224_init(void *cc)
@@ -869,7 +868,6 @@ sph_bmw224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	bmw32_close(cc, ub, n, dst, 7);
 	sph_bmw224_init(cc);
 }
-#endif
 
 /* see sph_bmw.h */
 void
@@ -902,7 +900,6 @@ sph_bmw256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 
 #if SPH_64
 
-#ifdef USE_SPH_BMW384
 /* see sph_bmw.h */
 void
 sph_bmw384_init(void *cc)
@@ -931,7 +928,6 @@ sph_bmw384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	bmw64_close(cc, ub, n, dst, 6);
 	sph_bmw384_init(cc);
 }
-#endif
 
 /* see sph_bmw.h */
 void

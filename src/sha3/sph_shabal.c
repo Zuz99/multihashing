@@ -662,7 +662,6 @@ shabal_close(void *cc, unsigned ub, unsigned n, void *dst, unsigned size_words)
 	shabal_init(sc, size_words << 5);
 }
 
-#ifdef USE_SPH_SHABAL192
 /* see sph_shabal.h */
 void
 sph_shabal192_init(void *cc)
@@ -690,9 +689,7 @@ sph_shabal192_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	shabal_close(cc, ub, n, dst, 6);
 }
-#endif
 
-#ifdef USE_SPH_SHABAL224
 /* see sph_shabal.h */
 void
 sph_shabal224_init(void *cc)
@@ -720,7 +717,6 @@ sph_shabal224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	shabal_close(cc, ub, n, dst, 7);
 }
-#endif
 
 /* see sph_shabal.h */
 void
@@ -750,7 +746,6 @@ sph_shabal256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	shabal_close(cc, ub, n, dst, 8);
 }
 
-#ifdef USE_SPH_SHABAL384
 /* see sph_shabal.h */
 void
 sph_shabal384_init(void *cc)
@@ -778,7 +773,6 @@ sph_shabal384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	shabal_close(cc, ub, n, dst, 12);
 }
-#endif
 
 /* see sph_shabal.h */
 void

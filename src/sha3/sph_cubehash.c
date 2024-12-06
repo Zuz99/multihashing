@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -603,7 +603,6 @@ cubehash_close(sph_cubehash_context *sc, unsigned ub, unsigned n,
 		sph_enc32le(out + (z << 2), sc->state[z]);
 }
 
-#ifdef USE_SPH_CUBEHASH224
 /* see sph_cubehash.h */
 void
 sph_cubehash224_init(void *cc)
@@ -632,7 +631,6 @@ sph_cubehash224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	cubehash_close(cc, ub, n, dst, 7);
 	sph_cubehash224_init(cc);
 }
-#endif
 
 /* see sph_cubehash.h */
 void
@@ -663,7 +661,6 @@ sph_cubehash256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	sph_cubehash256_init(cc);
 }
 
-#ifdef USE_SPH_CUBEHASH384
 /* see sph_cubehash.h */
 void
 sph_cubehash384_init(void *cc)
@@ -692,7 +689,6 @@ sph_cubehash384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	cubehash_close(cc, ub, n, dst, 12);
 	sph_cubehash384_init(cc);
 }
-#endif
 
 /* see sph_cubehash.h */
 void

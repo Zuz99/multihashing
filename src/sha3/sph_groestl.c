@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -3002,7 +3002,6 @@ groestl_big_close(sph_groestl_big_context *sc,
 	groestl_big_init(sc, (unsigned)out_len << 3);
 }
 
-#ifdef USE_SPH_GROESTL224
 /* see sph_groestl.h */
 void
 sph_groestl224_init(void *cc)
@@ -3030,7 +3029,6 @@ sph_groestl224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	groestl_small_close(cc, ub, n, dst, 28);
 }
-#endif
 
 /* see sph_groestl.h */
 void
@@ -3060,7 +3058,6 @@ sph_groestl256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	groestl_small_close(cc, ub, n, dst, 32);
 }
 
-#ifdef USE_SPH_GROESTL384
 /* see sph_groestl.h */
 void
 sph_groestl384_init(void *cc)
@@ -3088,7 +3085,6 @@ sph_groestl384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	groestl_big_close(cc, ub, n, dst, 48);
 }
-#endif
 
 /* see sph_groestl.h */
 void

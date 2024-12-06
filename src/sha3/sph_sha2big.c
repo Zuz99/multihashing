@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -88,6 +88,20 @@ static const sph_u64 K512[80] = {
 	SPH_C64(0x3C9EBE0A15C9BEBC), SPH_C64(0x431D67C49C100D4C),
 	SPH_C64(0x4CC5D4BECB3E42B6), SPH_C64(0x597F299CFC657E2A),
 	SPH_C64(0x5FCB6FAB3AD6FAEC), SPH_C64(0x6C44198C4A475817)
+};
+
+static const sph_u64 H384[8] = {
+	SPH_C64(0xCBBB9D5DC1059ED8), SPH_C64(0x629A292A367CD507),
+	SPH_C64(0x9159015A3070DD17), SPH_C64(0x152FECD8F70E5939),
+	SPH_C64(0x67332667FFC00B31), SPH_C64(0x8EB44A8768581511),
+	SPH_C64(0xDB0C2E0D64F98FA7), SPH_C64(0x47B5481DBEFA4FA4)
+};
+
+static const sph_u64 H512[8] = {
+	SPH_C64(0x6A09E667F3BCC908), SPH_C64(0xBB67AE8584CAA73B),
+	SPH_C64(0x3C6EF372FE94F82B), SPH_C64(0xA54FF53A5F1D36F1),
+	SPH_C64(0x510E527FADE682D1), SPH_C64(0x9B05688C2B3E6C1F),
+	SPH_C64(0x1F83D9ABFB41BD6B), SPH_C64(0x5BE0CD19137E2179)
 };
 
 /*
@@ -162,25 +176,16 @@ sha3_round(const unsigned char *data, sph_u64 r[8])
 #undef SHA3_IN
 }
 
-#ifdef USE_SPH_SHA384
 /* see sph_sha3.h */
 void
 sph_sha384_init(void *cc)
 {
 	sph_sha384_context *sc;
 
-	sc = cc;
-	sc->val[0] = SPH_C64(0xCBBB9D5DC1059ED8);
-	sc->val[1] = SPH_C64(0x629A292A367CD507);
-	sc->val[2] = SPH_C64(0x9159015A3070DD17);
-	sc->val[3] = SPH_C64(0x152FECD8F70E5939);
-	sc->val[4] = SPH_C64(0x67332667FFC00B31);
-	sc->val[5] = SPH_C64(0x8EB44A8768581511);
-	sc->val[6] = SPH_C64(0xDB0C2E0D64F98FA7);
-	sc->val[7] = SPH_C64(0x47B5481DBEFA4FA4);
+	sc = (sph_sha384_context*)cc;
+	memcpy(sc->val, H384, sizeof H384);
 	sc->count = 0;
 }
-#endif
 
 /* see sph_sha3.h */
 void
@@ -188,15 +193,8 @@ sph_sha512_init(void *cc)
 {
 	sph_sha512_context *sc;
 
-	sc = cc;
-	sc->val[0] = SPH_C64(0x6A09E667F3BCC908);
-	sc->val[1] = SPH_C64(0xBB67AE8584CAA73B);
-	sc->val[2] = SPH_C64(0x3C6EF372FE94F82B);
-	sc->val[3] = SPH_C64(0xA54FF53A5F1D36F1);
-	sc->val[4] = SPH_C64(0x510E527FADE682D1);
-	sc->val[5] = SPH_C64(0x9B05688C2B3E6C1F);
-	sc->val[6] = SPH_C64(0x1F83D9ABFB41BD6B);
-	sc->val[7] = SPH_C64(0x5BE0CD19137E2179);
+	sc = (sph_sha512_context*)cc;
+	memcpy(sc->val, H512, sizeof H512);
 	sc->count = 0;
 }
 
@@ -205,7 +203,6 @@ sph_sha512_init(void *cc)
 #define BE64   1
 #include "md_helper.c"
 
-#ifdef USE_SPH_SHA384
 /* see sph_sha3.h */
 void
 sph_sha384_close(void *cc, void *dst)
@@ -221,7 +218,6 @@ sph_sha384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	sha384_addbits_and_close(cc, ub, n, dst, 6);
 	sph_sha384_init(cc);
 }
-#endif
 
 /* see sph_sha3.h */
 void
@@ -239,7 +235,6 @@ sph_sha512_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	sph_sha512_init(cc);
 }
 
-#ifdef USE_SPH_SHA384
 /* see sph_sha3.h */
 void
 sph_sha384_comp(const sph_u64 msg[16], sph_u64 val[8])
@@ -248,6 +243,6 @@ sph_sha384_comp(const sph_u64 msg[16], sph_u64 val[8])
 	SHA3_ROUND_BODY(SHA3_IN, val);
 #undef SHA3_IN
 }
-#endif
 
 #endif
+

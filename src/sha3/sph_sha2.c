@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -49,6 +49,17 @@
 #define SSG2_0(x)      (ROTR(x, 7) ^ ROTR(x, 18) ^ SPH_T32((x) >> 3))
 #define SSG2_1(x)      (ROTR(x, 17) ^ ROTR(x, 19) ^ SPH_T32((x) >> 10))
 
+static const sph_u32 H224[8] = {
+	SPH_C32(0xC1059ED8), SPH_C32(0x367CD507), SPH_C32(0x3070DD17),
+	SPH_C32(0xF70E5939), SPH_C32(0xFFC00B31), SPH_C32(0x68581511),
+	SPH_C32(0x64F98FA7), SPH_C32(0xBEFA4FA4)
+};
+
+static const sph_u32 H256[8] = {
+	SPH_C32(0x6A09E667), SPH_C32(0xBB67AE85), SPH_C32(0x3C6EF372),
+	SPH_C32(0xA54FF53A), SPH_C32(0x510E527F), SPH_C32(0x9B05688C),
+	SPH_C32(0x1F83D9AB), SPH_C32(0x5BE0CD19)
+};
 
 /*
  * The SHA2_ROUND_BODY defines the body for a SHA-224 / SHA-256
@@ -602,29 +613,20 @@ sha2_round(const unsigned char *data, sph_u32 r[8])
 #undef SHA2_IN
 }
 
-#ifdef USE_SPH_SHA224
 /* see sph_sha2.h */
 void
 sph_sha224_init(void *cc)
 {
 	sph_sha224_context *sc;
 
-	sc = cc;
-	sc->val[0] = SPH_C32(0xC1059ED8);
-	sc->val[1] = SPH_C32(0x367CD507);
-	sc->val[2] = SPH_C32(0x3070DD17);
-	sc->val[3] = SPH_C32(0xF70E5939);
-	sc->val[4] = SPH_C32(0xFFC00B31);
-	sc->val[5] = SPH_C32(0x68581511);
-	sc->val[6] = SPH_C32(0x64F98FA7);
-	sc->val[7] = SPH_C32(0xBEFA4FA4);
+	sc = (sph_sha224_context*)cc;
+	memcpy(sc->val, H224, sizeof H224);
 #if SPH_64
 	sc->count = 0;
 #else
 	sc->count_high = sc->count_low = 0;
 #endif
 }
-#endif
 
 /* see sph_sha2.h */
 void
@@ -632,15 +634,8 @@ sph_sha256_init(void *cc)
 {
 	sph_sha256_context *sc;
 
-	sc = cc;
-	sc->val[0] = SPH_C32(0x6A09E667);
-	sc->val[1] = SPH_C32(0xBB67AE85);
-	sc->val[2] = SPH_C32(0x3C6EF372);
-	sc->val[3] = SPH_C32(0xA54FF53A);
-	sc->val[4] = SPH_C32(0x510E527F);
-	sc->val[5] = SPH_C32(0x9B05688C);
-	sc->val[6] = SPH_C32(0x1F83D9AB);
-	sc->val[7] = SPH_C32(0x5BE0CD19);
+	sc = (sph_sha224_context*)cc;
+	memcpy(sc->val, H256, sizeof H256);
 #if SPH_64
 	sc->count = 0;
 #else
@@ -653,7 +648,6 @@ sph_sha256_init(void *cc)
 #define BE32   1
 #include "md_helper.c"
 
-#ifdef USE_SPH_SHA224
 /* see sph_sha2.h */
 void
 sph_sha224_close(void *cc, void *dst)
@@ -669,7 +663,6 @@ sph_sha224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	sha224_addbits_and_close(cc, ub, n, dst, 7);
 	sph_sha224_init(cc);
 }
-#endif
 
 /* see sph_sha2.h */
 void
@@ -687,7 +680,6 @@ sph_sha256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	sph_sha256_init(cc);
 }
 
-#ifdef USE_SPH_SHA224
 /* see sph_sha2.h */
 void
 sph_sha224_comp(const sph_u32 msg[16], sph_u32 val[8])
@@ -696,4 +688,4 @@ sph_sha224_comp(const sph_u32 msg[16], sph_u32 val[8])
 	SHA2_ROUND_BODY(SHA2_IN, val);
 #undef SHA2_IN
 }
-#endif
+

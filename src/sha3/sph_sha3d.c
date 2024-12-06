@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -33,7 +33,7 @@
 #include <stddef.h>
 #include <string.h>
 
-#include "sph_keccak.h"
+#include "sph_sha3d.h"
 
 #ifdef __cplusplus
 extern "C"{
@@ -46,7 +46,7 @@ extern "C"{
  *  SPH_KECCAK_UNROLL      number of loops to unroll (0/undef for full unroll)
  *  SPH_KECCAK_INTERLEAVE  use bit-interleaving (32-bit type only)
  *  SPH_KECCAK_NOCOPY      do not copy the state into local variables
- *
+ * 
  * If there is no usable 64-bit type, the code automatically switches
  * back to the 32-bit implementation.
  *
@@ -1615,7 +1615,7 @@ keccak_core(sph_keccak_context *kc, const void *data, size_t len, size_t lim)
 		} u; \
 		size_t j; \
  \
-		eb = (0x100 | (ub & 0xFF)) >> (8 - n); \
+		eb = 0x6; \
 		if (kc->ptr == (lim - 1)) { \
 			if (n == 7) { \
 				u.tmp[0] = eb; \
@@ -1708,112 +1708,112 @@ DEFCLOSE(64, 72)
 
 /* see sph_keccak.h */
 void
-sph_keccak224_init(void *cc)
+sph_sha3d224_init(void *cc)
 {
 	keccak_init(cc, 224);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak224(void *cc, const void *data, size_t len)
+sph_sha3d224(void *cc, const void *data, size_t len)
 {
 	keccak_core(cc, data, len, 144);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak224_close(void *cc, void *dst)
+sph_sha3d224_close(void *cc, void *dst)
 {
-	sph_keccak224_addbits_and_close(cc, 0, 0, dst);
+	sph_sha3d224_addbits_and_close(cc, 0, 0, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
+sph_sha3d224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	keccak_close28(cc, ub, n, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak256_init(void *cc)
+sph_sha3d256_init(void *cc)
 {
 	keccak_init(cc, 256);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak256(void *cc, const void *data, size_t len)
+sph_sha3d256(void *cc, const void *data, size_t len)
 {
 	keccak_core(cc, data, len, 136);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak256_close(void *cc, void *dst)
+sph_sha3d256_close(void *cc, void *dst)
 {
-	sph_keccak256_addbits_and_close(cc, 0, 0, dst);
+	sph_sha3d256_addbits_and_close(cc, 0, 0, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
+sph_sha3d256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	keccak_close32(cc, ub, n, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak384_init(void *cc)
+sph_sha3d384_init(void *cc)
 {
 	keccak_init(cc, 384);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak384(void *cc, const void *data, size_t len)
+sph_sha3d384(void *cc, const void *data, size_t len)
 {
 	keccak_core(cc, data, len, 104);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak384_close(void *cc, void *dst)
+sph_sha3d384_close(void *cc, void *dst)
 {
-	sph_keccak384_addbits_and_close(cc, 0, 0, dst);
+	sph_sha3d384_addbits_and_close(cc, 0, 0, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
+sph_sha3d384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	keccak_close48(cc, ub, n, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak512_init(void *cc)
+sph_sha3d512_init(void *cc)
 {
 	keccak_init(cc, 512);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak512(void *cc, const void *data, size_t len)
+sph_sha3d512(void *cc, const void *data, size_t len)
 {
 	keccak_core(cc, data, len, 72);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak512_close(void *cc, void *dst)
+sph_sha3d512_close(void *cc, void *dst)
 {
-	sph_keccak512_addbits_and_close(cc, 0, 0, dst);
+	sph_sha3d512_addbits_and_close(cc, 0, 0, dst);
 }
 
 /* see sph_keccak.h */
 void
-sph_keccak512_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
+sph_sha3d512_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	keccak_close64(cc, ub, n, dst);
 }

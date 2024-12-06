@@ -36,8 +36,6 @@
 
 #include "sph_blake.h"
 
-int blake256_rounds = 14;
-
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -57,6 +55,8 @@ extern "C"{
 #ifdef _MSC_VER
 #pragma warning (disable: 4146)
 #endif
+
+static int blake32_rounds = 14; /* 8 in blakecoin */
 
 static const sph_u32 IV224[8] = {
 	SPH_C32(0xC1059ED8), SPH_C32(0x367CD507),
@@ -550,7 +550,7 @@ static const sph_u64 CB[16] = {
 		M[0xD] = sph_dec32be_aligned(buf + 52); \
 		M[0xE] = sph_dec32be_aligned(buf + 56); \
 		M[0xF] = sph_dec32be_aligned(buf + 60); \
-		for (r = 0; r < blake256_rounds; r ++) \
+		for (r = 0; r < blake32_rounds; r ++) \
 			ROUND_S(r); \
 		H0 ^= S0 ^ V0 ^ V8; \
 		H1 ^= S1 ^ V1 ^ V9; \
@@ -609,7 +609,7 @@ static const sph_u64 CB[16] = {
 		ROUND_S(5); \
 		ROUND_S(6); \
 		ROUND_S(7); \
-		if (blake256_rounds == 14) { \
+		if (blake32_rounds == 14) { \
 		ROUND_S(8); \
 		ROUND_S(9); \
 		ROUND_S(0); \
@@ -999,7 +999,6 @@ blake64_close(sph_blake_big_context *sc,
 
 #endif
 
-#ifdef USE_SPH_BLAKE224
 /* see sph_blake.h */
 void
 sph_blake224_init(void *cc)
@@ -1028,7 +1027,6 @@ sph_blake224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	blake32_close(cc, ub, n, dst, 7);
 	sph_blake224_init(cc);
 }
-#endif
 
 /* see sph_blake.h */
 void
@@ -1060,10 +1058,9 @@ sph_blake256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 }
 
 /* see sph_blake.h */
-void
-sph_blake256_set_rounds(int rounds)
+void sph_blake256_set_rounds(int rounds)
 {
-	blake256_rounds = rounds;
+	blake32_rounds = rounds;
 }
 
 #if SPH_64

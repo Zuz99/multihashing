@@ -290,7 +290,6 @@ sph_ripemd_comp(const sph_u32 msg[16], sph_u32 val[4])
  * RIPEMD-128.
  */
 
-#ifdef USE_SPH_RIPEMD128
 /*
  * Round constants for RIPEMD-128.
  */
@@ -539,7 +538,6 @@ sph_ripemd128_comp(const sph_u32 msg[16], sph_u32 val[4])
 	RIPEMD128_ROUND_BODY(RIPEMD128_IN, val);
 #undef RIPEMD128_IN
 }
-#endif
 
 /* ===================================================================== */
 /*
@@ -833,3 +831,4 @@ sph_ripemd160_comp(const sph_u32 msg[16], sph_u32 val[5])
 	RIPEMD160_ROUND_BODY(RIPEMD160_IN, val);
 #undef RIPEMD160_IN
 }
+

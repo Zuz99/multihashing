@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -999,7 +999,6 @@ jh_close(sph_jh_context *sc, unsigned ub, unsigned n,
 	jh_init(sc, iv);
 }
 
-#ifdef USE_SPH_JH224
 /* see sph_jh.h */
 void
 sph_jh224_init(void *cc)
@@ -1027,7 +1026,6 @@ sph_jh224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	jh_close(cc, ub, n, dst, 7, IV224);
 }
-#endif
 
 /* see sph_jh.h */
 void
@@ -1057,7 +1055,6 @@ sph_jh256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	jh_close(cc, ub, n, dst, 8, IV256);
 }
 
-#ifdef USE_SPH_JH384
 /* see sph_jh.h */
 void
 sph_jh384_init(void *cc)
@@ -1085,7 +1082,6 @@ sph_jh384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 {
 	jh_close(cc, ub, n, dst, 12, IV384);
 }
-#endif
 
 /* see sph_jh.h */
 void

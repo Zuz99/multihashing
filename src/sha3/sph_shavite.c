@@ -5,7 +5,7 @@
  * ==========================(LICENSE BEGIN)============================
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -13,10 +13,10 @@
  * distribute, sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -99,7 +99,7 @@ static const sph_u32 IV512[] = {
 /*
  * This is the code needed to match the "reference implementation" as
  * published on Nov 23rd, 2009, instead of the published specification.
- * 
+ *
 
 #define AES_BIG_ENDIAN   1
 #include "aes_helper.c"
@@ -147,8 +147,6 @@ static const sph_u32 IV512[] = {
 		(k2) = (k3); \
 		(k3) = kt; \
 	} while (0)
-
-#if defined(USE_SPH_SHAVITE224) || defined(USE_SPH_SHAVITE256)
 
 #if SPH_SMALL_FOOTPRINT_SHAVITE
 
@@ -720,7 +718,6 @@ c256(sph_shavite_small_context *sc, const void *msg)
 	sc->h[0x7] ^= p7;
 }
 
-#endif
 #endif
 
 #if SPH_SMALL_FOOTPRINT_SHAVITE
@@ -1478,7 +1475,6 @@ c512(sph_shavite_big_context *sc, const void *msg)
 
 #endif
 
-#if defined(USE_SPH_SHAVITE224) || defined(USE_SPH_SHAVITE256)
 static void
 shavite_small_init(sph_shavite_small_context *sc, const sph_u32 *iv)
 {
@@ -1553,7 +1549,6 @@ shavite_small_close(sph_shavite_small_context *sc,
 	for (u = 0; u < out_size_w32; u ++)
 		sph_enc32le((unsigned char *)dst + (u << 2), sc->h[u]);
 }
-#endif
 
 static void
 shavite_big_init(sph_shavite_big_context *sc, const sph_u32 *iv)
@@ -1644,7 +1639,6 @@ shavite_big_close(sph_shavite_big_context *sc,
 		sph_enc32le((unsigned char *)dst + (u << 2), sc->h[u]);
 }
 
-#ifdef USE_SPH_SHAVITE224
 /* see sph_shavite.h */
 void
 sph_shavite224_init(void *cc)
@@ -1674,9 +1668,7 @@ sph_shavite224_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	shavite_small_close(cc, ub, n, dst, 7);
 	shavite_small_init(cc, IV224);
 }
-#endif
 
-#ifdef USE_SPH_SHAVITE256
 /* see sph_shavite.h */
 void
 sph_shavite256_init(void *cc)
@@ -1706,9 +1698,7 @@ sph_shavite256_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	shavite_small_close(cc, ub, n, dst, 8);
 	shavite_small_init(cc, IV256);
 }
-#endif
 
-#ifdef USE_SPH_SHAVITE384
 /* see sph_shavite.h */
 void
 sph_shavite384_init(void *cc)
@@ -1738,7 +1728,6 @@ sph_shavite384_addbits_and_close(void *cc, unsigned ub, unsigned n, void *dst)
 	shavite_big_close(cc, ub, n, dst, 12);
 	shavite_big_init(cc, IV384);
 }
-#endif
 
 /* see sph_shavite.h */
 void
